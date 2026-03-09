@@ -256,10 +256,11 @@ section:nth-last-child(2):not(.hero) {
   .menu {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    column-gap: 24px;
 
     article {
       width: calc(50% - 24px);
+      margin-block: 0 24px;
     }
   }
 }
