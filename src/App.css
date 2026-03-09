@@ -21,8 +21,11 @@ body {
 }
 
 h1 {
-  font-size: clamp(1.5rem, 1.618vw + 1.121rem, 2.375rem);
+  font-size: clamp(1.5rem, 0.925vw + 1.283rem, 2rem);
+  font-weight: bold;
+  color: var(--black);
 }
+
 h2 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -64,6 +67,7 @@ header {
   font-weight: bold;
   font-size: 1.5rem;
   border-block-end: 1px solid var(--bg-gray);
+  background-color: #fff;
 
   a {
     display: flex;
@@ -122,6 +126,8 @@ article {
   min-height: 160px;
   border-radius: 5px;
   margin-block: 24px;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 
   img {
     border-radius: 5px;
@@ -160,6 +166,10 @@ article {
   }
 }
 
+article:hover {
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.05);
+}
+
 section:nth-last-child(2):not(.hero) {
   margin-block-end: 76px;
 }
@@ -193,7 +203,7 @@ section:nth-last-child(2):not(.hero) {
   .content {
     display: flex;
     justify-content: space-between;
-    gap: 24px;
+    gap: 30px;
   }
 
   .content {
@@ -209,7 +219,7 @@ section:nth-last-child(2):not(.hero) {
 
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.05);
 
     button {
       background-color: var(--invalid-color);
@@ -259,7 +269,7 @@ section:nth-last-child(2):not(.hero) {
     justify-content: space-between;
 
     article {
-      width: calc(50% - 24px);
+      width: calc((100% - 20px) / 2);
       margin-block: 0 24px;
     }
   }
