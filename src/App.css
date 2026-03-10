@@ -183,28 +183,53 @@ section:nth-last-child(2):not(.hero) {
 /* ================================================================ */
 
 .shopping-cart {
+  display: flex;
+  flex-direction: column-reverse;
   position: fixed;
   inset-inline: 0;
   bottom: 0;
   padding: 0 16px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
   background-color: #fff;
-  display: flex;
-  flex-direction: column-reverse;
 
   > button {
     width: 100%;
+    height: 65px;
     border-radius: 5px;
     color: white;
-    background-color: var(--accent-color);
+    background-color: #822774;
     font-weight: bold;
     margin-block: 12px;
+  }
+  > button:hover {
+    background-color: hsl(from #822774 h s 30%);
+  }
+
+  > button:has(span) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   button[disabled] {
     background-color: var(--invalid-color);
     color: #8b9a9b;
     cursor: not-allowed;
+  }
+
+  .btn-count {
+    display: inline-block;
+    padding: 8px 10px;
+    background-color: hsl(from #822774 h s 15%);
+  }
+
+  .btn-close {
+    display: block;
+    margin-inline: auto 0;
+
+    i {
+      font-size: 1.5rem;
+    }
   }
 
   .items p,
@@ -293,6 +318,7 @@ section:nth-last-child(2):not(.hero) {
   }
 
   .shopping-cart {
+    flex-direction: column;
     position: sticky;
     top: 30px;
     height: min-content;
@@ -301,9 +327,23 @@ section:nth-last-child(2):not(.hero) {
     border-radius: 5px;
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.05);
 
-    button[disabled] + p {
+    > button {
+      background-color: var(--accent-color);
+    }
+
+    > button:hover {
+      background-color: hsl(from var(--accent-color) h s 30%);
+    }
+    > button[disabled]:hover {
+      background-color: var(--invalid-color);
+    }
+    > button[disabled] + p {
       padding-block: 50px;
       text-align: center;
+    }
+
+    .btn-close {
+      display: none;
     }
   }
 

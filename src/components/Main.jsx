@@ -1,10 +1,25 @@
 import Category from "./Category";
 import Cart from "./Cart";
 import Hero from "./Hero";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Main = ({ data }) => {
+  const getWindowSize = () => {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  };
   const [cart, setCart] = useState([]);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+    const handleWindowResize = () => setWindowSize(getWindowSize());
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   return (
     <main>
@@ -21,8 +36,6 @@ const Main = ({ data }) => {
                 <Category
                   key={`${category.name} ${index}`}
                   category={category}
-                  // name={category.name}
-                  // meals={category.meals}
                   setCart={setCart}
                   cart={cart}
                 />
@@ -30,7 +43,11 @@ const Main = ({ data }) => {
             );
           })}
         </div>
-        <Cart cart={cart} setCart={setCart} />
+        <Cart
+          cart={cart}
+          setCart={setCart}
+          isMobile={windowSize.innerWidth < 769}
+        />
       </div>
     </main>
   );
