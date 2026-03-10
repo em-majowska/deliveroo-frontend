@@ -1,9 +1,11 @@
-import React from "react";
 import Category from "./Category";
 import Cart from "./Cart";
 import Hero from "./Hero";
+import { useState } from "react";
 
 const Main = ({ data }) => {
+  const [cart, setCart] = useState([]);
+
   return (
     <main>
       <Hero
@@ -13,17 +15,22 @@ const Main = ({ data }) => {
       />
       <div className="content container">
         <div className="categories">
-          {data.categories.slice(0, 6).map((category, index) => {
+          {data.categories.map((category, index) => {
             return (
-              <Category
-                key={index}
-                name={category.name}
-                meals={category.meals}
-              />
+              category.meals.length > 0 && (
+                <Category
+                  key={`${category.name} ${index}`}
+                  category={category}
+                  // name={category.name}
+                  // meals={category.meals}
+                  setCart={setCart}
+                  cart={cart}
+                />
+              )
             );
           })}
         </div>
-        <Cart />
+        <Cart cart={cart} setCart={setCart} />
       </div>
     </main>
   );

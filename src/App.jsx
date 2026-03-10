@@ -4,7 +4,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+// const apiUrl = import.meta.env.VITE_API_URL;
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(apiUrl);
+        // const response = await axios.get(apiUrl);
+        const response = await axios.get("http://localhost:3000");
 
         setData(response.data);
         setIsLoading(false);

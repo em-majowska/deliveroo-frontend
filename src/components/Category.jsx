@@ -1,20 +1,13 @@
 import Item from "./Item";
 
-const Category = (props) => {
+const Category = ({ category, setCart, cart }) => {
   return (
     <section>
-      <h2>{props.name}</h2>
+      <h2>{category.name}</h2>
       <div className="menu">
-        {props.meals.map((meal) => {
+        {category.meals.map((meal) => {
           return (
-            <Item
-              key={meal.id}
-              title={meal.title}
-              description={meal.description}
-              price={meal.price}
-              popular={meal.popular}
-              picture={meal.picture}
-            />
+            <Item key={meal.id} meal={meal} setCart={setCart} cart={cart} />
           );
         })}
       </div>
