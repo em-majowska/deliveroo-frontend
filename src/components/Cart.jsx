@@ -12,17 +12,23 @@ const Cart = ({ cart, setCart }) => {
 
   const changeQuantity = (val, id) => {
     const item = cart.find((item) => item.id === id);
-    if (val === "-") {
-      const copy = [...cart];
+    const copy = [...cart];
 
-      item.quantity--;
-      setCart(copy);
+    if (val === "-") {
+      if (item.quantity < 2) {
+        const index = cart.indexOf((item) => item.id === id);
+        copy.splice(index, 1);
+      } else {
+        item.quantity--;
+      }
     } else {
       const copy = [...cart];
 
       item.quantity++;
       setCart(copy);
     }
+
+    setCart(copy);
   };
 
   return (
