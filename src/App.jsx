@@ -36,6 +36,7 @@ function App() {
         <Hero
           title={data.restaurant.name}
           content={data.restaurant.description}
+          picture={data.restaurant.picture}
         />
         <div className="content container">
           <div className="categories">
