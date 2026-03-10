@@ -6,6 +6,8 @@ import axios from "axios";
 import Category from "./components/Category";
 import Cart from "./components/Cart";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -13,9 +15,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://site--deliveroo-backend--cbyxgq8rr8f2.code.run",
-        );
+        const response = await axios.get(apiUrl);
 
         setData(response.data);
         setIsLoading(false);
