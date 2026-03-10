@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
 import axios from "axios";
-import Category from "./components/Category";
-import Cart from "./components/Cart";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -32,27 +30,7 @@ function App() {
   ) : (
     <>
       <Header />
-      <main>
-        <Hero
-          title={data.restaurant.name}
-          content={data.restaurant.description}
-          picture={data.restaurant.picture}
-        />
-        <div className="content container">
-          <div className="categories">
-            {data.categories.slice(0, 6).map((category, index) => {
-              return (
-                <Category
-                  key={index}
-                  name={category.name}
-                  meals={category.meals}
-                />
-              );
-            })}
-          </div>
-          <Cart />
-        </div>
-      </main>
+      <Main data={data} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import "../icons.css";
+import "../assets/fonts/icons.css";
 const Item = (props) => {
   return (
     <article>
