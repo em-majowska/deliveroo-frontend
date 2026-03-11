@@ -68,7 +68,10 @@ header {
   font-size: 1.5rem;
   border-block-end: 1px solid var(--bg-gray);
   background-color: #fff;
-
+  .container {
+    display: flex;
+    align-items: center;
+  }
   a {
     display: flex;
     align-items: center;
@@ -181,6 +184,10 @@ section:nth-last-child(2):not(.hero) {
 /* ================================================================ */
 /* ======================= SHOPPING CART ========================== */
 /* ================================================================ */
+
+.shopping-cart.desktop-cart {
+  display: none;
+}
 
 .shopping-cart {
   display: flex;
@@ -317,6 +324,12 @@ section:nth-last-child(2):not(.hero) {
     margin-block-start: 30px;
   }
 
+  .shopping-cart:not(.desktop-cart) {
+    display: none;
+  }
+  .shopping-cart.desktop-cart {
+    display: block;
+  }
   .shopping-cart {
     flex-direction: column;
     position: sticky;
