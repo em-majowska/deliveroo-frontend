@@ -1,20 +1,12 @@
 import "../assets/fonts/icons.css";
 const Item = ({ meal, cart, setCart }) => {
-  const handleClick = (id, name, price) => {
+  const handleClick = (id) => {
     const item = cart.find((item) => item.id === id);
 
     if (!item) {
-      const newItem = {
-        id: id,
-        name: name,
-        price: Number(price),
-        quantity: 1,
-      };
-
-      setCart([...cart, newItem]);
+      setCart([...cart, { ...meal, quantity: 1 }]);
     } else {
       const copy = [...cart];
-
       item.quantity++;
       setCart(copy);
     }
@@ -25,7 +17,7 @@ const Item = ({ meal, cart, setCart }) => {
   };
 
   return (
-    <article onClick={() => handleClick(meal.id, meal.title, meal.price)}>
+    <article onClick={() => handleClick(meal.id)}>
       <div className="col-1">
         <h3>{meal.title}</h3>
         <p>{formatString(meal.description)}</p>

@@ -5,10 +5,15 @@ import CartDetails from "./CartDetails";
 const Cart = ({ cart, setCart, isMobile }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const calculatePrice = (quantity, price) => {
+    return Math.round(quantity * Number(price) * 100) / 100;
+  };
+
   const subtotal = cart.reduce((acc, curr) => {
-    return acc + curr.quantity * curr.price;
+    return acc + calculatePrice(curr.quantity, curr.price);
   }, 0);
   const deliveryFee = 2.7;
+
   const total = subtotal + deliveryFee;
   const itemsCount = cart.reduce((acc, curr) => acc + curr.quantity, 0);
 
@@ -47,6 +52,7 @@ const Cart = ({ cart, setCart, isMobile }) => {
                 total={total}
                 itemsCount={itemsCount}
                 onClose={() => setIsOpen(!isOpen)}
+                calculatePrice={calculatePrice}
               />
             </>
           ) : isMobile ? (
@@ -71,6 +77,7 @@ const Cart = ({ cart, setCart, isMobile }) => {
                 deliveryFee={deliveryFee}
                 total={total}
                 itemsCount={itemsCount}
+                calculatePrice={calculatePrice}
               />
             </>
           )}

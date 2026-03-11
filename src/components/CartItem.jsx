@@ -1,5 +1,4 @@
-const CartItem = ({ item, changeQuantity }) => {
-  const itemTotal = (item.price * item.quantity).toFixed(2);
+const CartItem = ({ item, changeQuantity, calculatePrice }) => {
   return (
     <div className="item">
       <div className="counter">
@@ -7,8 +6,8 @@ const CartItem = ({ item, changeQuantity }) => {
         <span>{item.quantity}</span>
         <button onClick={() => changeQuantity("+", item.id)}>+</button>
       </div>
-      <p>{item.name}</p>
-      <span>{itemTotal} €</span>
+      <p>{item.title}</p>
+      <span>{calculatePrice(item.price, item.quantity).toFixed(2)} €</span>
     </div>
   );
 };

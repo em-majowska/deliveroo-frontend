@@ -7,6 +7,7 @@ const CartDetails = ({
   deliveryFee,
   total,
   onClose,
+  calculatePrice,
 }) => {
   return (
     <div className="cart-details">
@@ -23,6 +24,7 @@ const CartDetails = ({
                 key={item.id}
                 item={item}
                 changeQuantity={changeQuantity}
+                calculatePrice={calculatePrice}
               />
             )
           );
